@@ -4,7 +4,7 @@ import MacroTesting
 import SnapshotTesting
 import Testing
 
-@Suite(.macros(["stringify": StringifyMacro.self], record: .failed))
+@Suite(.macros([StringifyMacro.self], record: .failed))
 struct MyMacroTests {
   @Test
   func testMacro() {
