@@ -17,15 +17,15 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/swiftlang/swift-syntax", from: "603.0.0"),
-    .package(url: "https://github.com/pointfreeco/swift-macro-testing", from: "0.6.5"),
+    .package(url: "https://github.com/swiftlang/swift-syntax", exact: "603.0.2"),
+    .package(url: "https://github.com/pointfreeco/swift-macro-testing", exact: "0.7.0"),
   ],
   targets: [
     .macro(
       name: "MyMacroMacros",
       dependencies: [
         .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
-        .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
+        .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
       ]
     ),
 
@@ -35,6 +35,8 @@ let package = Package(
       name: "MyMacroTests",
       dependencies: [
         "MyMacroMacros",
+        .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+        .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
         .product(name: "MacroTesting", package: "swift-macro-testing"),
       ]
     ),
